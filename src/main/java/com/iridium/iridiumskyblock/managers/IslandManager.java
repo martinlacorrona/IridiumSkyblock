@@ -196,7 +196,6 @@ public class IslandManager {
                 //There is a value
                 Island island = IridiumSkyblock.getPersist().gson.fromJson(resultSet.getString("json"), Island.class);
                 cache.put(id, island);
-                connection.close();
 
                 island.init();
                 if (island.getName().length() > IridiumSkyblock.getConfiguration().maxIslandName) {
@@ -209,7 +208,6 @@ public class IslandManager {
 
                 return island;
             }
-            connection.close();
             cache.put(id, null);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -267,7 +265,6 @@ public class IslandManager {
                 ClaimManager.removeClaims(island.id, connection);
                 IslandDataManager.remove(island.id, connection);
                 connection.commit();
-                connection.close();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }

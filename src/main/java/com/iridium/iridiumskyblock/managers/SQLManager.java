@@ -12,6 +12,8 @@ import java.util.logging.Level;
 public class SQLManager {
     private final HikariDataSource hikariDataSource = new HikariDataSource();
 
+    private Connection connectionSaved = null;
+
     public SQLManager() {
         setupConnection();
     }
@@ -51,7 +53,6 @@ public class SQLManager {
             connection.createStatement().executeUpdate("DELETE FROM islandmanager;");
             connection.createStatement().executeUpdate("DELETE FROM islanddata;");
             connection.commit();
-            connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -78,18 +79,18 @@ public class SQLManager {
 
             connection.commit();
 
-            connection.close();
-
         } catch (SQLException ex) {
             IridiumSkyblock.getInstance().getLogger().log(Level.SEVERE, "SQLite exception on Creating Tables", ex);
         }
     }
 
     public Connection getConnection() {
+        if(connectionSaved != null)
+            return connectionSaved;
         try {
-            Connection connection = hikariDataSource.getConnection();
-            connection.setAutoCommit(false);
-            return connection;
+            connectionSaved = hikariDataSource.getConnection();
+            connectionSaved.setAutoCommit(true);
+            return connectionSaved;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

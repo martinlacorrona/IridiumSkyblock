@@ -28,7 +28,6 @@ public class ClaimManager {
                 islands.add(resultSet.getInt("island"));
             }
             statement.close();
-            connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -59,7 +58,6 @@ public class ClaimManager {
                 Connection connection = IridiumSkyblock.getSqlManager().getConnection();
                 addClaim(x, z, island, connection);
                 connection.commit();
-                connection.close();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }

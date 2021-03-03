@@ -91,7 +91,6 @@ public class LegacyIslandManager {
             insert.executeUpdate();
             insert.close();
             connection.commit();
-            connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

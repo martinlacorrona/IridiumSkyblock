@@ -92,7 +92,6 @@ public class IslandDataManager {
         save(island, connection);
         try {
             connection.commit();
-            connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

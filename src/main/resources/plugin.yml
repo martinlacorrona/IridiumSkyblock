@@ -1,9 +1,9 @@
 name: IridiumSkyblock
-version: 2.6.7
-description: Skyblock Redefined
+version: 2.6.8
+description: Skyblock Redefined by tatin1998
 main: com.iridium.iridiumskyblock.IridiumSkyblock
 api-version: '1.13'
-author: IridiumDevelopment
+author: tatin1998Edited
 load: STARTUP
 depend: [ Vault ]
 softdepend: [ RoseStacker, WorldEdit, PlaceholderAPI, MVdWPlaceholderAPI, WildStacker, EpicSpawners, UltimateStacker, MergedSpawner, Multiverse-Core, Essentials, EssentialsChat, ChatManager, DeluxeChat ]

@@ -32,7 +32,6 @@ public class UserManager {
                 //There is a value
                 User user = IridiumSkyblock.getPersist().gson.fromJson(resultSet.getString("json"), User.class);
                 cache.put(uuid, user);
-                connection.close();
                 statement.close();
                 return user;
             } else {
@@ -40,7 +39,6 @@ public class UserManager {
                 cache.put(uuid, user);
                 saveUser(user, connection);
                 connection.commit();
-                connection.close();
                 statement.close();
                 return user;
             }
