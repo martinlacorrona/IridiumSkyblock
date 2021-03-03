@@ -90,7 +90,6 @@ public class LegacyIslandManager {
             insert.setDouble(6, IslandManager.nextLocation.getZ());
             insert.executeUpdate();
             insert.close();
-            connection.commit();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

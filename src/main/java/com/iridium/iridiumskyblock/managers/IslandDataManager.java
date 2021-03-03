@@ -90,11 +90,6 @@ public class IslandDataManager {
         }
         Connection connection = IridiumSkyblock.getSqlManager().getConnection();
         save(island, connection);
-        try {
-            connection.commit();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
     }
 
     public static class IslandData {

@@ -52,7 +52,6 @@ public class SQLManager {
             connection.createStatement().executeUpdate("DELETE FROM islands;");
             connection.createStatement().executeUpdate("DELETE FROM islandmanager;");
             connection.createStatement().executeUpdate("DELETE FROM islanddata;");
-            connection.commit();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -76,8 +75,6 @@ public class SQLManager {
 
             connection.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS islanddata "
                     + "(islandID INTEGER, value DOUBLE, votes INTEGER, private BOOLEAN);");
-
-            connection.commit();
 
         } catch (SQLException ex) {
             IridiumSkyblock.getInstance().getLogger().log(Level.SEVERE, "SQLite exception on Creating Tables", ex);

@@ -38,7 +38,6 @@ public class UserManager {
                 User user = new User(uuid);
                 cache.put(uuid, user);
                 saveUser(user, connection);
-                connection.commit();
                 statement.close();
                 return user;
             }

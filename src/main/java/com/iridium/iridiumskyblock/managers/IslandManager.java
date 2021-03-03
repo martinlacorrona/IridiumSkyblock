@@ -259,15 +259,10 @@ public class IslandManager {
 
     public static void removeIsland(Island island) {
         Bukkit.getScheduler().runTaskAsynchronously(IridiumSkyblock.getInstance(), () -> {
-            try {
-                Connection connection = IridiumSkyblock.getSqlManager().getConnection();
-                removeIsland(island, connection);
-                ClaimManager.removeClaims(island.id, connection);
-                IslandDataManager.remove(island.id, connection);
-                connection.commit();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            Connection connection = IridiumSkyblock.getSqlManager().getConnection();
+            removeIsland(island, connection);
+            ClaimManager.removeClaims(island.id, connection);
+            IslandDataManager.remove(island.id, connection);
         });
     }
 }

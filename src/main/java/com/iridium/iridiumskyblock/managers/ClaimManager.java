@@ -54,13 +54,8 @@ public class ClaimManager {
         islandIds.add(island);
         cache.put(chunkKey, islandIds);
         Bukkit.getScheduler().runTaskAsynchronously(IridiumSkyblock.getInstance(), () -> {
-            try {
                 Connection connection = IridiumSkyblock.getSqlManager().getConnection();
                 addClaim(x, z, island, connection);
-                connection.commit();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
         });
     }
 
